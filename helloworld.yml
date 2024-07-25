@@ -1,5 +1,9 @@
 ---
-- name: Apache server installed
-
-
-#do a playbook to install
+# This playbook prints a simple debug message
+- name: Echo Hello World
+  hosts: myhosts
+  connection: local
+  tasks:
+  - name: Print debug message
+    debug:
+      msg: Hello, world!
