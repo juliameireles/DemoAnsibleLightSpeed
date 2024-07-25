@@ -1,0 +1,5 @@
+---
+- name: Apache server installed
+
+
+#do a playbook to install
