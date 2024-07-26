@@ -16,7 +16,7 @@
     - name: Write content to files
       ansible.builtin.copy:
         content: "{{ item_content }}"
-        dest: "{{ dest_dir }}{{ item }}"
+        dest: "{{ dest_dir }}"
       loop: "{{ files }}"
       loop_control:
         loop_var: file_name
