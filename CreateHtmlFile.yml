@@ -1,15 +1,15 @@
 ---
 - name: Criar e configurar um arquivo de texto
-  hosts: localhost
+  hosts: meu localhost
   become: yes
   tasks:
     - name: Criar um diretório para o arquivo
       file:
-        path: /home/user14/Documents
+        path: /home/user14/Documents/arquivo.txt
         state: directory
 
     - name: Criar um arquivo de texto
-      copy:
+      ansible.builtin.copy:
         dest: /home/user14/Documents/arquivo.txt
         content: |
           Esta é uma linha de texto.
