@@ -1,0 +1,15 @@
+---
+- name: create text file 
+  hosts: localhost
+  become: yes
+  vars:
+    item: "Hey! seu playbook foi executado"
+    _dest_: /home/user14/Documents/
+  tasks:
+    - name: writting the content
+      ansible.builtin.copy:
+        content: "{{ item }}"
+        dest: "{{ _dest_ }}"
+      loop:
+        - test.txt
+        - test2.txt
