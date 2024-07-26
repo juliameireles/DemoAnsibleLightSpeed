@@ -3,7 +3,7 @@
   become: yes
   vars:
     item_content: "Hey! seu playbook foi executado"
-    dest_dir: /home/user14/Documents/
+    dest_dir: /home/user14/Documents
     files: 
       - test.txt
       - test2.txt
