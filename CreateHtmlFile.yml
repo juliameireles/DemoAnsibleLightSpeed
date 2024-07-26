@@ -1,17 +1,24 @@
----
-- name: create text file 
+- name: Create text files with content
   hosts: localhost
   become: yes
   vars:
-    item: "Hey! seu playbook foi executado"
-    _dest_: /home/user14/Documents/
+    item_content: "Hey! seu playbook foi executado"
+    dest_dir: /home/user14/Documents/
     files: 
-    - test.txt
-    - test2.txt
+      - test.txt
+      - test2.txt
   tasks:
-    - name: writting the content
+    - name: Ensure destination directory exists
+      ansible.builtin.file:
+        path: "{{ dest_dir }}"
+        state: directory
+
+    - name: Write content to files
       ansible.builtin.copy:
-        content: "{{ item }}"
-        dest: "{{ _dest_ }}{{ item }}"
+        content: "{{ item_content }}"
+        dest: "{{ dest_dir }}{{ item }}"
       loop: "{{ files }}"
+      loop_control:
+        loop_var: file_name
+
         
