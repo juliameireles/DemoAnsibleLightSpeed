@@ -1,24 +1,18 @@
-- name: Create text files with content
+---
+- name: Criar e configurar um arquivo de texto
   hosts: localhost
   become: yes
-  vars:
-    item_content: "Hey! seu playbook foi executado"
-    dest_dir: /home/user14/Documents
-    files: 
-      - test.txt
-      - test2.txt
   tasks:
-    - name: Ensure destination directory exists
-      ansible.builtin.file:
-        path: "{{ dest_dir }}"
+    - name: Criar um diretório para o arquivo
+      file:
+        path: /home/user14/Documents
         state: directory
 
-    - name: Write content to files
-      ansible.builtin.copy:
-        content: "{{ item_content }}"
-        dest: "{{ dest_dir }}{{ item }}"
-      loop: "{{ files }}"
-      loop_control:
-        loop_var: item
-
-        
+    - name: Criar um arquivo de texto
+      copy:
+        dest: /home/user14/Documents/arquivo.txt
+        content: |
+          Esta é uma linha de texto.
+          Esta é outra linha de texto.
+        mode: '0644'
+ 
