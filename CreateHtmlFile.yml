@@ -5,11 +5,13 @@
   vars:
     item: "Hey! seu playbook foi executado"
     _dest_: /home/user14/Documents/
+    files: 
+    - test.txt
+    - test2.txt
   tasks:
     - name: writting the content
       ansible.builtin.copy:
         content: "{{ item }}"
-        dest: "{{ _dest_ }}"
-      loop:
-        - test.txt
-        - test2.txt
+        dest: "{{ _dest_ }}{{ item }}"
+      loop: "{{ files }}"
+        
