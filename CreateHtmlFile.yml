@@ -17,7 +17,7 @@
       ansible.builtin.copy:
         content: "{{ item_content }}"
         dest: "{{ dest_dir }}"
-      loop: "{{ files }}"
+      loop: "{{ files }}{{file_name}}"
       loop_control:
         loop_var: file_name
 
