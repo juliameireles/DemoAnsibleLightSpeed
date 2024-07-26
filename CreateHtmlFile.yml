@@ -1,12 +1,44 @@
 ---
-- name: Testar criação de arquivo
+- name: Criar e configurar um arquivo de texto
   hosts: localhost
   become: yes
   tasks:
-    - name: Criar um arquivo de texto de teste
+    - name: Verificar o diretório antes da criação
+      command: ls -ld /home/user14/Documents
+      register: dir_before
+
+    - name: Exibir informações do diretório antes da criação
+      debug:
+        var: dir_before.stdout
+
+    - name: Criar um arquivo de texto
       ansible.builtin.copy:
-        dest: /home/user14/Documents/teste.txt
-        content: "Teste de criação de arquivo."
+        dest: /home/user14/Documents/arquivo.txt
+        content: |
+          Esta é uma linha de texto.
+          Esta é outra linha de texto.
         mode: '0644'
+
+
+    - name: Exibir informações do diretório após a criação
+      debug:
+        var: dir_after.stdout
+
+    - name: Verificar o arquivo criado
+      command: ls -l /home/user14/Documents/arquivo.txt
+      register: file_status
+
+    - name: Exibir informações do arquivo criado
+      debug:
+        var: file_status.stdout
+
+    - name: Verificar o conteúdo do arquivo
+      command: cat /home/user14/Documents/arquivo.txt
+      register: file_content
+
+    - name: Exibir conteúdo do arquivo
+      debug:
+        var: file_content.stdout
+
 
  
