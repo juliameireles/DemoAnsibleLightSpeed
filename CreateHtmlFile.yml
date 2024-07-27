@@ -3,6 +3,10 @@
   hosts: localhost
   become: yes
   tasks:
+    - name: Exibir o conteúdo do diretório pai
+      debug:
+      var: parent_dir_content.stdout
+      
     - name: Verificar o diretório antes da criação
       command: ls -ld /home/user14/Documents
       register: dir_before
