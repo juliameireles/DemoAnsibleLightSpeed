@@ -3,6 +3,10 @@
   hosts: localhost
   become: yes
   tasks:
+    - name: Exibir o usuário atual
+      debug:
+       var: current_user.stdout
+
     - name: Exibir o conteúdo do diretório pai
       debug:
         var: parent_dir_content.stdout
