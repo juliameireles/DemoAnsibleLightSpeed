@@ -4,8 +4,16 @@
   become: yes
   tasks:
     - name: Exibir o usuário atual
+      command: whoami
+      register: current_user
+
+    - name: Exibir o conteúdo do diretório pai
+      command: ls -l /home/user14
+      register: parent_dir_content
+
+    - name: Exibir o usuário atual
       debug:
-       var: current_user.stdout
+        var: current_user.stdout
 
     - name: Exibir o conteúdo do diretório pai
       debug:
@@ -27,6 +35,9 @@
           Esta é outra linha de texto.
         mode: '0644'
 
+    - name: Verificar o diretório após a criação
+      command: ls -ld /home/user14/Documents
+      register: dir_after
 
     - name: Exibir informações do diretório após a criação
       debug:
@@ -47,6 +58,3 @@
     - name: Exibir conteúdo do arquivo
       debug:
         var: file_content.stdout
-
-
- 
