@@ -1,11 +1,17 @@
 ---
 - name: Criar um arquivo simples no localhost
-  hosts: meu localhost
-  become: yes  # Usa privilégios elevados se necessário (por exemplo, para permissões de arquivos)
+  hosts: localhost
+  become: yes  # Usa privilégios elevados se necessário
   tasks:
+    - name: Criar o diretório destino se não existir
+      file:
+        path: /tmp/ansible_test_dir
+        state: directory
+        mode: '0755'
+
     - name: Criar um arquivo de texto
       ansible.builtin.copy:
-        dest: /home/user14/arquivo_simples.txt
+        dest: /tmp/ansible_test_dir/arquivo_simples.txt
         content: |
           Este é um arquivo criado pelo Ansible.
         mode: '0644'
