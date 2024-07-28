@@ -1,6 +1,6 @@
 ---
 - name: Criar um arquivo simples no localhost
-  hosts: meu localhost
+  hosts: erro
   become: yes  # Usa privilégios elevados se necessário
   tasks:
     - name: Criar o diretório destino se não existir
