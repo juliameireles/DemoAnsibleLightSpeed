@@ -3,6 +3,12 @@
   hosts: localhost
   become: yes
   tasks:
+    - name: Criar diretório se não existir
+      file:
+        path: /home/user14/Documents
+        state: directory
+        mode: '0755'
+
     - name: Exibir o usuário atual
       command: whoami
       register: current_user
@@ -10,6 +16,7 @@
     - name: Exibir o conteúdo do diretório pai
       command: ls -l /home/user14
       register: parent_dir_content
+      ignore_errors: yes  # Ignorar erros caso o diretório não exista
 
     - name: Exibir o usuário atual
       debug:
@@ -22,6 +29,7 @@
     - name: Verificar o diretório antes da criação
       command: ls -ld /home/user14/Documents
       register: dir_before
+      ignore_errors: yes  # Ignorar erros caso o diretório não exista
 
     - name: Exibir informações do diretório antes da criação
       debug:
