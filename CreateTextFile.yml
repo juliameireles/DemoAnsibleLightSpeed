@@ -5,13 +5,13 @@
   tasks:
     - name: Criar o diretório destino se não existir
       file:
-        path: /tmp/ansible_test_dir
+        path: /runner/project/ansible_test_dir
         state: directory
         mode: '0755'
 
     - name: Criar um arquivo de texto
       ansible.builtin.copy:
-        dest: /tmp/ansible_test_dir/arquivo_simples.txt
+        dest: /runner/project/ansible_test_dir/arquivo.txt
         content: |
           Este é um arquivo criado pelo Ansible.
         mode: '0644'
