@@ -1,0 +1,19 @@
+---
+- name: Exibir informações do diretório atual e usuário atual
+  hosts: localhost
+  tasks:
+    - name: Obter o diretório atual
+      command: pwd
+      register: current_directory
+
+    - name: Exibir o diretório atual
+      debug:
+        msg: "O diretório atual é: {{ current_directory.stdout }}"
+
+    - name: Obter o usuário atual
+      command: whoami
+      register: current_user
+
+    - name: Exibir o usuário atual
+      debug:
+        msg: "O usuário atual é: {{ current_user.stdout }}"
