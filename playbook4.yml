@@ -6,7 +6,7 @@
   become: yes
   tasks:
   - name: latest Apache version installed
-    command: "yum install httpd -y"
+    command: "dnf install httpd"
   - name: Apache enabled and running
     service:
       name: httpd
