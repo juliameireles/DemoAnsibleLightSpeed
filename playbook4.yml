@@ -1,6 +1,8 @@
 ---
 - name: Apache server installed
   hosts: localhost
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
   become: yes
   tasks:
   - name: latest Apache version installed
