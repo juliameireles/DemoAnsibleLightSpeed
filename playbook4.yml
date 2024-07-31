@@ -1,20 +1,30 @@
 ---
 - name: Apache server installed
   hosts: localhost
+  vars:
+    ansible_python_interpreter: /usr/libexec/platform-python
+  become: yes
   tasks:
-  - name: Verificar versão do Python
-    command: python3 --version
-#  hosts: localhost
-#  vars:
-#  ansible_python_interpreter: /usr/libexec/platform-python
-# become: yes
- # tasks:
-  #- name: latest Apache version installed
-    #yum:
-    #  name: httpd
-     # state: latest
-  #- #name: Apache enabled and running
-    #service:
- #     name: httpd
-    #  enabled: true
-     # state: started
+  - name: latest Apache version installed
+    command: "yum install httpd -y"
+  - name: Apache enabled and running
+    service:
+      name: httpd
+      enabled: true
+      state: started
+# ---
+# - name: Apache server installed
+#   hosts: localhost
+#   vars:
+#     ansible_python_interpreter: /usr/libexec/platform-python
+#   become: yes
+#   tasks:
+#   - name: latest Apache version installed
+#     yum:
+#       name: httpd
+#       state: latest
+#   - name: Apache enabled and running
+#     service:
+#       name: httpd
+#       enabled: true
+#       state: started
