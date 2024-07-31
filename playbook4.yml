@@ -1,6 +1,6 @@
 ---
 - name: Apache server installed
-- hosts: localhost
+  hosts: localhost
   tasks:
   - name: Verificar versão do Python
     command: python3 --version
