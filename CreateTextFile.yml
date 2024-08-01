@@ -1,17 +1,17 @@
 ---
 - name: Criar um arquivo simples no localhost
-  hosts: localhost
+  hosts: aws_ec2
   become: yes  # Usa privilégios elevados se necessário
   tasks:
     - name: Criar o diretório destino se não existir
       file:
-        path: /runner/project/ansible_test_dir
+        path: /home/ec2-user/MyDocuments/
         state: directory
         mode: '0755'
 
     - name: Criar um arquivo de texto
       ansible.builtin.copy:
-        dest: /runner/project/ansible_test_dir/arquivo.txt
+        dest: /home/ec2-user/MyDocuments/arquivo.txt
         content: |
           Este é um arquivo criado pelo Ansible.
         mode: '0644'
