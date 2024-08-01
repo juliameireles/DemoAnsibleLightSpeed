@@ -10,14 +10,15 @@
 
   - name: install Apache
     ansible.builtin.package:
-      name: apache2
+      name: httpd
       state: present
 
   - name: Garantee apache is started
     ansible.builtin.service:
-      name: apache2
+      name: httpd
       state: started
       enabled: true
+
 
 
 
