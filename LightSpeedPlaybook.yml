@@ -1,0 +1,25 @@
+---
+- name: install Apache
+  hosts: aws_ec2
+  become: yes 
+  tasks:
+  - name: update dnf packages
+    ansible.builtin.package:
+      name: '*'
+      state: latest
+
+  - name: install Apache
+    ansible.builtin.package:
+      name: apache2
+      state: present
+
+  - name: Garantee apache is started
+    ansible.builtin.service:
+      name: apache2
+      state: started
+      enabled: true
+
+
+
+
+
