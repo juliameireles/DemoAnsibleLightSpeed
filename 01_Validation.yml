@@ -1,0 +1,24 @@
+- name: Validar e preparar ambiente
+  hosts: aws_ec2
+  become: yes
+  tasks:
+    - name: Verificar se o Python está instalado
+      command: which python3
+      register: python_installed
+      failed_when: python_installed.rc != 0
+
+    - name: Atualizar pacotes
+      apt:
+        update_cache: yes
+        upgrade: yes
+
+    - name: Verificar estado das instâncias
+      ec2_instance_info:
+        region: us-west-2
+      register: ec2_info
+
+    - name: Validar o estado das instâncias
+      assert:
+        that:
+          - ec2_info.instances | length > 0
+        fail_msg: "Nenhuma instância EC2 encontrada!"

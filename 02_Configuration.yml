@@ -1,0 +1,30 @@
+- name: Configuração pós-validação
+  hosts: aws_ec2
+  become: yes
+  tasks:
+    - name: Instalar Nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Iniciar e habilitar o serviço Nginx
+      systemd:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Configurar página inicial
+      copy:
+        dest: /var/www/html/index.html
+        content: |
+          <html>
+          <head><title>Bem-vindo ao Nginx!</title></head>
+          <body>
+            <h1>O Nginx foi configurado com sucesso!</h1>
+          </body>
+          </html>
+
+    - name: Garantir que o Nginx esteja ativo
+      systemd:
+        name: nginx
+        state: restarted
