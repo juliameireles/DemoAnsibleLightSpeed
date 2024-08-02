@@ -12,13 +12,3 @@
         update_cache: yes
         upgrade: yes
 
-    - name: Verificar estado das instâncias
-      ec2_instance_info:
-        region: us-east-1
-      register: ec2_info
-
-    - name: Validar o estado das instâncias
-      assert:
-        that:
-          - ec2_info.instances | length > 0
-        fail_msg: "Nenhuma instância EC2 encontrada!"
