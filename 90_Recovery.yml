@@ -7,10 +7,3 @@
         path: /var/www/html/index.html
         state: absent
       ignore_errors: yes
-
-    - name: Notificar administrador sobre a falha
-      mail:
-        to: juliameirelesprofissional@gmail.com
-        subject: "Recuperação de Falha"
-        body: "O processo de validação falhou. O arquivo de configuração foi removido e a recuperação foi realizada com sucesso."
-      delegate_to: localhost

@@ -14,7 +14,7 @@
 
     - name: Verificar estado das instâncias
       ec2_instance_info:
-        region: us-west-2
+        region: us-east-1
       register: ec2_info
 
     - name: Validar o estado das instâncias
