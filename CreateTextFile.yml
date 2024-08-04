@@ -3,14 +3,14 @@
   hosts: aws_ec2
   become: yes  # Usa privilégios elevados se necessário
   tasks:
-    - name: Verificar se o diretório /home/ec2-user/MyDocuments existe
+    - name: Verificar se o diretório /home/ubuntu/MyDocuments existe
       stat:
-        path: /home/ec2-user/MyDocuments/
+        path: /home/ubuntu/MyDocuments/
       register: dir_stat
 
     - name: Criar um arquivo de texto se o diretório existir
       ansible.builtin.copy:
-        dest: /home/ec2-user/MyDocuments/arquivo.txt
+        dest: /home/ubuntu/MyDocuments/arquivo.txt
         content: |
           Este é um arquivo criado pelo Ansible.
         mode: '0644'

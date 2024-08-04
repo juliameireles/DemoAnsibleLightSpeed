@@ -1,0 +1,17 @@
+- name: Configure Database Servers
+  hosts: aws_ec2
+  become: yes
+
+  tasks: 
+    - name: install the postgresql-server package
+
+
+    - name: start the postgresql-server service
+
+
+    - name: allow the traffic through the firewall
+  
+
+
+
+

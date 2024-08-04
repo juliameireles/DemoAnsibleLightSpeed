@@ -8,16 +8,21 @@
       name: '*'
       state: latest
 
-  - name: install Apache
+  - name: install Apache 
     ansible.builtin.package:
-      name: httpd
+      name: apache2
       state: present
 
-  - name: Garantee apache is started
+  - name: Garantee apache is started  
     ansible.builtin.service:
-      name: httpd
+      name: apache2
       state: started
       enabled: true
+
+  
+
+
+
 
 
 
