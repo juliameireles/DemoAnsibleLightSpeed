@@ -8,6 +8,12 @@
       name: '*'
       state: latest
 
+
+  - name: Update APT cache
+    apt:
+      update_cache: yes
+
+      
   - name: install Apache 
     ansible.builtin.package:
       name: apache2
