@@ -1,5 +1,5 @@
 - name: Recuperação Simples
-  hosts: aws_ec2
+  hosts: nginx ec2 instances 
   become: yes
   tasks:
     - name: Remover o arquivo de configuração de teste

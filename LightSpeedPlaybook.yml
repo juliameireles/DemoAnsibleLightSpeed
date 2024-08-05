@@ -1,6 +1,6 @@
 ---
 - name: install Apache
-  hosts: aws_ec2
+  hosts: apache ec2 instances
   become: yes 
   tasks:
   - name: update dnf packages
