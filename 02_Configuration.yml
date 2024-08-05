@@ -1,5 +1,5 @@
 - name: Configuração pós-validação
-  hosts: nginx ec2 instances
+  hosts: nginx_ec2_instances
   become: yes
   tasks:
     - name: Instalar Nginx

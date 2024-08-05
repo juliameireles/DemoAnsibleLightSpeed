@@ -1,5 +1,5 @@
 - name: Validar e preparar ambiente
-  hosts: nginx ec2 instances
+  hosts: nginx_ec2_instances
   become: yes
   tasks:
     - name: Verificar se o Python está instalado
